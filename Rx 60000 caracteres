@@ -9,10 +9,10 @@ uart = UART(0, baudrate=42000, tx=Pin(0), rx=Pin(1))  # Asegúrate de que coinci
 led = machine.Pin("LED", machine.Pin.OUT)
 
 # Función para recibir el archivo
-def recibir_txt(nombre_archivo):
+def recibir_txt(Archivo):
     try:
-        with open(nombre_archivo, 'w') as archivo:  # Abrir en modo 'w' para sobrescribir
-            print(f"Esperando recibir datos en '{nombre_archivo}'...")
+        with open(Archivo, 'w') as archivo:  # Abrir en modo 'w' para sobrescribir
+            print(f"Esperando recibir datos en '{Archivo}'...")
             while True:
                 if uart.any():  # Verificar si hay datos disponibles
                     contenido = uart.read()  # Leer los datos recibidos
@@ -28,4 +28,4 @@ def recibir_txt(nombre_archivo):
         print(f"Error: {e}")
 
 # Llamar a la función para recibir el archivo
-recibir_txt('Datos_Recibidos.txt')
+recibir_txt('Archivo.txt')
